@@ -1,0 +1,7 @@
+node_modules
+hack.js
+npm-debug.log
+*.swp
+*.*~
+.vagrant
+.idea
