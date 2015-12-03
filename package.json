@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/benjamincarp/rabbit-tutorials/issues"
   },
-  "homepage": "https://github.com/benjamincarp/rabbit-tutorials#readme"
+  "homepage": "https://github.com/benjamincarp/rabbit-tutorials#readme",
+  "dependencies": {
+    "amqplib": "^0.4.0"
+  }
 }
