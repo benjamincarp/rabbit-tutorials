@@ -1,18 +1,26 @@
 #!/usr/bin/env node
 
 var amqp = require('amqplib');
+var ch, conn, q;
 
+amqp.connect('amqp://localhost').then(function(_conn) {
+    conn = _conn;
+    return conn.createChannel();
+})
+.then(function(_ch) {
+    q = 'hello';
+    ch = _ch;
 
-amqp.connect('amqp://localhost').then(function(conn) {
-    conn.createChannel().then(function(ch) {
-        var q = 'hello';
-
-        ch.assertQueue(q, {durable: true})
-            .then(ch.sendToQueue(q, new Buffer('Hello World!')))
-            .then(function(ok){ console.log(" [x] Sent 'Hello World!'") });
-    });
-    setTimeout(function() { conn.close(); process.exit(0) }, 500);
+    return ch.assertQueue(q, {durable: true});
+})
+.then(function(){
+    return ch.sendToQueue(q, new Buffer('Hello World!'));
+})
+.then(function(){
+    console.log(" [x] Sent 'Hello World!'")
 });
+
+setTimeout(function() { conn.close(); process.exit(0) }, 500);
 
 //amqp.connect('amqp://localhost', function(err, conn) {
 //    conn.createChannel(function(err, ch) {
