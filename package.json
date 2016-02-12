@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/benjamincarp/rabbit-tutorials#readme",
   "dependencies": {
-    "amqplib": "^0.4.0"
+    "amqplib": "^0.4.0",
+    "when": "^3.7.7"
   }
 }
