@@ -12,14 +12,9 @@ amqp.connect('amqp://localhost').then(function(_conn) {
 })
 .then(function(_ch) {
     ch = _ch;
-
     return ch.assertQueue(q, {durable: true});
 })
-.then(function(){
-    return ch.sendToQueue(q, new Buffer(msg));
-})
-.then(function(){
-    console.log(" [x] Sent  '%s'", msg)
-});
+.then(function(){ return ch.sendToQueue(q, new Buffer(msg)); })
+.then(function(){ console.log(" [x] Sent  '%s'", msg); });
 
 setTimeout(function() { conn.close(); process.exit(0) }, 500);
