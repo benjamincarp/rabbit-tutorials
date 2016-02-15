@@ -4,7 +4,7 @@ var amqp = require('amqplib');
 var ch, conn;
 
 var q = 'live_queue';
-var x = 'live-exchange';
+var x = 'live_exchange';
 
 var msg = process.argv.slice(2).join(' ') || JSON.stringify({ text:"Hello World!", version:"12345678" });
 

@@ -4,10 +4,10 @@ var amqp = require('amqplib');
 var ch, conn;
 
 var live_q = 'live_queue';
-var live_x = 'live-exchange';
+var live_x = 'live_exchange';
 
 var wait_q = 'wait_queue';
-var wait_x = 'wait-exchange';
+var wait_x = 'wait_exchange';
 var waitQueueOptions = { arguments: { "x-dead-letter-exchange": live_x}, durable: true };
 
 function recieve(msg){
